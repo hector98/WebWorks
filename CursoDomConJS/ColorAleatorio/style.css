@@ -1,0 +1,26 @@
+/* Estilos Generales */
+
+* {
+		marigin: 0;
+		padding: 0;
+		font-family: 'Verdana', sans-serif;
+}
+
+body {
+		height: 100vh;
+		background-color: #2b802b;
+		text-align: center;
+}
+
+.center-flex {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+}
+
+.contenedor {
+		height: 220px;
+		width: 450px;
+		background-color: #ffffff;
+}
+
