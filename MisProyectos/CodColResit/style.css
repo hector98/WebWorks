@@ -66,12 +66,12 @@ body {
 
 #band1 {
 	margin-left: 40px;
-	background-color: yellow;
+	background-color: brown;
 }
 
 #band2 {
 	margin-left: 10px;
-	background-color: purple;
+	background-color: black;
 }
 
 #band3 {
@@ -83,3 +83,11 @@ body {
 	margin-left: 20px;
 	background-color: gold;
 }
+
+#result {
+	text-align: center;
+	font-size: 50px;
+	font-weight: bold;
+	font-family: Sans-Serif;
+}
+
