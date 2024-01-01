@@ -19,7 +19,6 @@ body {
 	align-items: center;
 	width: 80%;
 	height: 80%;
-	padding-bottom: 170px;
 }
 
 .container-resistencia {
@@ -48,7 +47,7 @@ body {
 }
 
 .alambre {
-	width: 35px;
+	width: 105px;
 	height: 10px;
 	background-color: #9B9B9B;
 }
@@ -56,17 +55,20 @@ body {
 #left {
 	border-radius: 40px 15px 15px 40px;
 	width: 25%;
+	min-width: 25%;
 	height: 100px;
 }
 
 #middle {
 	width: 50%;
+	min-width: 50%;
 	height: 70px;
 }
 
 #right {
 	border-radius: 15px 40px 40px 15px;
 	width: 25%;
+	min-width: 25%;
 	height: 100px;
 }
 
@@ -82,7 +84,7 @@ body {
 
 #band3 {
 	margin-left: 30px;
-	background-color: black;
+	background-color: gray;
 }
 
 #band4 {
@@ -92,17 +94,9 @@ body {
 
 #result {
 	text-align: center;
-	font-size: 80px;
+	font-size: 50px;
 	font-weight: bold;
 	color: #FFFFFF;
 	font-family: Sans-Serif;
-}
-
-#title {
-	text-align: center;
-	font-size: 40px;
-	font-weight: bold;
-	color: #FFFFFF;
-	font-family: lucida console;
 }
 

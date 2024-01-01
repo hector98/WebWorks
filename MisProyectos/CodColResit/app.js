@@ -4,12 +4,26 @@ const band3 = document.getElementById("band3");
 const band4 = document.getElementById("band4");
 
 const result = document.getElementById("result");
-result.innerText = "1K Ohmios +/-5%";
-var c1 = band1.options[band1.selectedIndex].value;
-var c2 = band2.options[band2.selectedIndex].value;
-var c3 = band3.options[band3.selectedIndex].value;
-var c4 = band4.options[band4.selectedIndex].value;
-console.log(c1, c2, c3, c4);
+/*
+band1.options[band1.selectedIndex].value = "brown";
+band2.options[band2.selectedIndex].value = "black";
+band3.options[band3.selectedIndex].value = "red";
+band4.options[band4.selectedIndex].value = "gold";
+*/
+
+/*const colors = {
+	"black": "#000000",
+	"brown": "#804000",
+	"red": "#FF4422",
+	"orange": "#F4A020",
+	"yellow": "#FFFF00",
+	"green": "#01DF01",
+	"blue": "#0101DF",
+	"purple": "#7401DF",
+	"gray": "#848484",
+	"white": "#FFFFFF",
+	"gold": "#CDA434"
+}*/
 
 function band1Band2(bands)
 {
@@ -93,6 +107,14 @@ function bandMult(ban3)
 	{
 		r = 10000000;
 	}
+	else if(ban3 === "gold")
+	{
+		r = 0.1;
+	}
+	else if(ban3 === "silver")
+	{
+		r = 0.01;
+	}
 
 	return r;
 }
@@ -108,9 +130,29 @@ function tolerance(tol)
 	{
 		r = 2;
 	}
-	else
+	else if(tol === "green")
+	{
+		r = 0.5;
+	}
+	else if(tol === "blue")
+	{
+		r = 0.25;
+	}
+	else if(tol === "purple")
+	{
+		r = 0.10;
+	}
+	else if(tol === "gray")
+	{
+		r = 0.05;
+	}
+	else if(tol === "gold")
 	{
 		r = 5;
+	}
+	else
+	{
+		r = 10;
 	}
 
 	return r;
@@ -122,8 +164,8 @@ function calculate(b)
 	let band2Color = band2.options[band2.selectedIndex].value;
 	let band3Color = band3.options[band3.selectedIndex].value;
 	let band4Color = band4.options[band4.selectedIndex].value;
-	let total = `${band1Band2(band1Color)}${band1Band2(band2Color)}`;
-	total = parseInt(total) * bandMult(band3Color);
+	let total = `${band1Band2(band1Color)}.${band1Band2(band2Color)}`;
+	total = parseFloat(total) * bandMult(band3Color);
 
 	let m = "";
 	if(total >= 1000 && total <= 100000)
@@ -131,33 +173,43 @@ function calculate(b)
 		total /= 1000;
 		m = "K";
 	}
-	else if(total >= 100000 && total <= 10000000)
+	else if(total >= 100000 && total <= 100000000)
 	{
 		total /= 100000;
 		m = "M";
 	}
+	else if(total >= 100000000)
+	{
+		total /= 100000000;
+		m = "G";
+	}
 
-	result.innerText = `${total}${m} Ohmios +/-${tolerance(band4Color)}%`;
+	result.innerText = `${total}${m}Ω ±${tolerance(band4Color)}%`;
 }
 
 band1.addEventListener("change", (e) => {
-	calculate(e.target.value);
+	band1.options[band1.selectedIndex].value = e.target.value;
+	calculate();
 	band1.style.backgroundColor = e.target.value;
 });
 
 band2.addEventListener("change", (e) => {
+	band2.options[band2.selectedIndex].value = e.target.value;
 	calculate(e.target.value);
 	band2.style.backgroundColor = e.target.value;
 });
 
 band3.addEventListener("change", (e) => {
+	band3.options[band3.selectedIndex].value = e.target.value;
 	calculate(e.target.value);
 	band3.style.backgroundColor = e.target.value;
+	console.log(e.target.value);
 });
 
 band4.addEventListener("change", (e) => {
+	band4.options[band4.selectedIndex].value = e.target.value;
 	calculate(e.target.value);
 	band4.style.backgroundColor = e.target.value;
 });
 
-
+calculate();
