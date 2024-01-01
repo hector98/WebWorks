@@ -9,64 +9,64 @@ let estadoCronometro = 'pausado';
 
 function actualizarCronometro()
 {
-				segundos++;
-				
-				if(segundos / 60 === 1)
-				{
-								segundos = 0;
-								minutos++;
-								
-								if(minutos / 60 === 1)
-								{
-												minutos = 0;
-												horas++;
-								}
-				}
+	segundos++;
 
-				const segundosConFormato = asignarFormato(segundos);
-				const minutosConFormato = asignarFormato(minutos);
-				const horasConFormato = asignarFormato(horas);
+	if(segundos / 60 === 1)
+	{
+		segundos = 0;
+		minutos++;
 
-				cronometro.innerText = `${horasConFormato}:${minutosConFormato}:${segundosConFormato}`;
+		if(minutos / 60 === 1)
+		{
+			minutos = 0;
+			horas++;
+		}
+	}
+
+	const segundosConFormato = asignarFormato(segundos);
+	const minutosConFormato = asignarFormato(minutos);
+	const horasConFormato = asignarFormato(horas);
+
+	cronometro.innerText = `${horasConFormato}:${minutosConFormato}:${segundosConFormato}`;
 }
 
 function asignarFormato(unidadDeTiempo){
-				return unidadDeTiempo < 10 ? '0' + unidadDeTiempo : unidadDeTiempo;
+	return unidadDeTiempo < 10 ? '0' + unidadDeTiempo : unidadDeTiempo;
 }
 
 botonInicioPausa.addEventListener('click', function(){
 	if(estadoCronometro === 'pausado')
 	{
-					estadoCronometro = 'corriendo';
-					intervaloDeTiempo = window.setInterval(actualizarCronometro, 1000);
-					botonInicioPausa.innerText = 'P';
-					botonInicioPausa.classList.remove('iniciar');
-					botonInicioPausa.classList.add('pausar');
-					estadoCronometro = 'corriendo';
+		estadoCronometro = 'corriendo';
+		intervaloDeTiempo = window.setInterval(actualizarCronometro, 1000);
+		botonInicioPausa.innerText = 'P';
+		botonInicioPausa.classList.remove('iniciar');
+		botonInicioPausa.classList.add('pausar');
+		estadoCronometro = 'corriendo';
 	}
 	else
 	{
-				estadoCronometro = 'pausado';
-				window.clearInterval(intervaloDeTiempo);
-				botonInicioPausa.innerText = 'I';
-				botonInicioPausa.classList.remove('pausar');
-				botonInicioPausa.classList.add('iniciar');
-				estadoCronometro = 'pausado';
+		estadoCronometro = 'pausado';
+		window.clearInterval(intervaloDeTiempo);
+		botonInicioPausa.innerText = 'I';
+		botonInicioPausa.classList.remove('pausar');
+		botonInicioPausa.classList.add('iniciar');
+		estadoCronometro = 'pausado';
 	}
 })
 
 botonReiniciar.addEventListener('click', function(){
-				window.clearInterval(intervaloDeTiempo);
+	window.clearInterval(intervaloDeTiempo);
 
-				segundos = 0;
-				minutos = 0;
-				horas = 0;
-				cronometro.innerText = '00:00:00';
+	segundos = 0;
+	minutos = 0;
+	horas = 0;
+	cronometro.innerText = '00:00:00';
 
-				botonInicioPausa.innerText = 'I';
-				botonInicioPausa.classList.remove('pausar');
-				botonInicioPausa.classList.add('iniciar');
+	botonInicioPausa.innerText = 'I';
+	botonInicioPausa.classList.remove('pausar');
+	botonInicioPausa.classList.add('iniciar');
 
-				estadoCronometro = 'pausado';
+	estadoCronometro = 'pausado';
 })
 
